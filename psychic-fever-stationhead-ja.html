@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYCHIC FEVER ファンダムチャンネル申請ガイド｜Stationhead</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #68f838;
+    --green-dark: #3db800;
+    --green-bg: #f0ffe8;
+    --green-border: #aaee88;
+    --black: #111111;
+    --gray: #555555;
+    --gray-light: #f5f5f5;
+    --border: #e0e0e0;
+    --white: #ffffff;
+    --radius: 10px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--black);
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 6vw, 2.8rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title span { color: var(--green); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: #aaa;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .hero-btn:hover { background: #88ff55; transform: translateY(-1px); }
+
+  /* Steps bar */
+  .steps-bar {
+    background: var(--green-bg);
+    border-bottom: 2px solid var(--green-border);
+    padding: 14px 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    padding: 0 12px;
+  }
+
+  .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-arrow { color: #aaa; font-size: 16px; }
+
+  /* Main */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--green);
+    display: inline-block;
+  }
+
+  /* Field card */
+  .field-group { margin-bottom: 2.5rem; }
+
+  .field-card {
+    background: var(--gray-light);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 12px;
+    transition: border-color 0.15s;
+  }
+
+  .field-card:hover { border-color: var(--green-border); }
+
+  .field-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .field-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .field-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  .field-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.6;
+    word-break: break-all;
+  }
+
+  .field-value.large { font-size: 18px; }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+    background: var(--green);
+    border: none;
+    border-radius: 7px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .copy-btn:hover { background: #88ff55; }
+  .copy-btn.copied { background: #ccc; color: #555; }
+
+  /* Color swatch */
+  .color-swatch {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #68f838;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  /* Message cards */
+  .msg-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 14px;
+  }
+
+  .msg-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .msg-badge {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-dark);
+    background: var(--green-bg);
+    border: 1.5px solid var(--green-border);
+    border-radius: 6px;
+    padding: 3px 12px;
+  }
+
+  .msg-text {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.75;
+  }
+
+  /* Station handles */
+  .handle-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .handle-item {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .handle-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .handle-copy {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green-dark);
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-radius: 5px;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .handle-copy:hover { background: var(--green); color: var(--black); border-color: var(--green); }
+  .handle-copy.copied { background: #eee; color: #888; border-color: #ddd; }
+
+  .copy-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    margin-top: 6px;
+  }
+
+  .copy-all-btn:hover { background: #333; }
+  .copy-all-btn.copied { background: #888; }
+
+  /* Spotify links */
+  .playlist-card {
+    background: var(--gray-light);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .playlist-info p:first-child {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+
+  .playlist-info p:last-child {
+    font-size: 11px;
+    color: #888;
+    word-break: break-all;
+  }
+
+  /* Notice box */
+  .notice {
+    background: var(--green-bg);
+    border: 1.5px solid var(--green-border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .notice strong { color: var(--green-dark); }
+
+  /* Footer */
+  .footer {
+    background: var(--black);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    color: #666;
+    font-size: 13px;
+  }
+
+  .footer span { color: var(--green); }
+
+  @media (max-width: 480px) {
+    .steps-bar { justify-content: flex-start; }
+    .handle-item { width: 100%; justify-content: space-between; }
+    .playlist-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="hero-eyebrow">ファンキャンペーン · Stationhead</p>
+  <h1 class="hero-title"><span>PSYCHIC FEVER</span>の<br>ファンダムチャンネルを作ろう！</h1>
+  <p class="hero-sub">下の各項目をコピーして、Stationheadの申請フォームに貼り付けるだけ！たった2分でできます🔥</p>
+  <a class="hero-btn" href="https://www.stationhead.com/p/request-channel" target="_blank" rel="noopener">
+    🎙 申請フォームを開く ↗
+  </a>
+</div>
+
+<div class="steps-bar">
+  <div class="step-item"><span class="step-num">1</span> フォームを開く</div>
+  <span class="step-arrow">›</span>
+  <div class="step-item"><span class="step-num">2</span> 各項目をコピー</div>
+  <span class="step-arrow">›</span>
+  <div class="step-item"><span class="step-num">3</span> 貼り付けて送信！</div>
+</div>
+
+<div class="main">
+
+  <div class="notice">
+    <strong>📋 使い方：</strong> 各項目はStationheadのフォームの項目に対応しています。各項目の横にある<strong>コピー</strong>ボタンをタップして、フォームの対応する欄に貼り付けてください。配信者のハンドル名は、フォームの<strong>「+ Add」</strong>ボタンで1件ずつ追加してください。
+  </div>
+
+  <!-- Basic Fields -->
+  <div class="field-group">
+    <p class="section-title">基本情報</p>
+
+    <div class="field-card">
+      <div class="field-top">
+        <div>
+          <div class="field-label">Fandom</div>
+          <div class="field-note">このチャンネルのファンダム名</div>
+        </div>
+        <button class="copy-btn" data-copy="ForEVER">⎘ コピー</button>
+      </div>
+      <div class="field-value large">ForEVER</div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-top">
+        <div>
+          <div class="field-label">Artist or Topic</div>
+          <div class="field-note">チャンネルで取り上げるアーティスト名</div>
+        </div>
+        <button class="copy-btn" data-copy="PSYCHIC FEVER from EXILE TRIBE">⎘ コピー</button>
+      </div>
+      <div class="field-value large">PSYCHIC FEVER from EXILE TRIBE</div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-top">
+        <div>
+          <div class="field-label">Color</div>
+          <div class="field-note">R:104 G:248 B:56 — 蛍光黄緑</div>
+        </div>
+        <button class="copy-btn" data-copy="#68F838">⎘ コピー</button>
+      </div>
+      <div class="field-value"><span class="color-swatch"></span>#68F838</div>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <p class="section-title">チャンネルが欲しい理由 — 1つ選んでコピー！（英語のまま貼り付けてOK）</p>
+
+    <div id="why-cards"></div>
+  </div>
+
+  <div class="field-group">
+    <p class="section-title">Spotifyプレイリストリンク — 1つ選んでコピー！</p>
+
+    <div id="playlist-cards"></div>
+  </div>
+
+  <div class="field-group">
+    <p class="section-title">追加する配信者 — フォームの「+ Add」ボタンで1件ずつ追加してね</p>
+
+    <div class="handle-grid" id="handle-grid"></div>
+
+    <button class="copy-all-btn" id="copy-all-btn">⎘ ハンドル名を一括コピー</button>
+    <p class="field-note" style="margin-top: 8px;">※ 一括コピーして貼り付けるか、1件ずつ追加してください</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  💚 <span>ForEVER</span>ファンによる応援ページ — みんなでPSYCHIC FEVERのチャンネルを勝ち取ろう！
+</div>
+
+<script>
+// Why messages
+const whyMessages = [
+  {
+    label: "Message 1",
+    text: "PSYCHIC FEVER from EXILE TRIBE has a passionate and growing fanbase worldwide. As a global group, they deserve a dedicated 24/7 space where fans from different countries can stream together and support their music. A Stationhead channel would be a powerful hub for our international fandom, ForEVER."
+  },
+  {
+    label: "Message 2",
+    text: "PSYCHIC FEVER from EXILE TRIBE is an internationally active group with fans all over the world. Having a dedicated Stationhead channel would allow ForEVER fans globally to unite, stream their music around the clock, and help bring greater worldwide recognition to their incredible artistry."
+  },
+  {
+    label: "Message 3",
+    text: "We are requesting a channel for PSYCHIC FEVER from EXILE TRIBE because their music deserves to be heard worldwide. With a dedicated Stationhead channel, the ForEVER fandom — spanning Japan, Southeast Asia, the US, Europe, and beyond — can come together 24/7 to support and spread their music."
+  },
+  {
+    label: "Message 4",
+    text: "PSYCHIC FEVER from EXILE TRIBE has built a remarkable global following. A dedicated Stationhead channel would give the worldwide ForEVER fandom a home to stream continuously, promote their releases, and show the world just how much love there is for this incredible group across borders."
+  },
+  {
+    label: "Message 5",
+    text: "PSYCHIC FEVER from EXILE TRIBE is a group with extraordinary global appeal and a dedicated international fanbase called ForEVER. With Stationhead's worldwide reach and our fandom's passion, a dedicated channel would amplify their music globally and prove that K-pop adjacent Japanese acts have a strong international audience."
+  }
+];
+
+// Playlists
+const playlists = [
+  { label: "Spotify Playlist 1", url: "https://open.spotify.com/playlist/544BYIVhyXR8nCzWjZr6oc?si=35648ef718fa4b60" },
+  { label: "Spotify Playlist 2", url: "https://open.spotify.com/playlist/260wvwFDK2qGaSqo5LFsZm?si=62c37003cc5045ae" },
+  { label: "Spotify Playlist 3", url: "https://open.spotify.com/playlist/0DaMawSq8cVvDftjRpcy1o?si=f455d81e348b414a" },
+  { label: "Spotify Playlist 4", url: "https://open.spotify.com/playlist/6E79NW5SzIzbqYZM76NqhS?si=f6c2f174075641e2" },
+  { label: "Spotify Playlist 5", url: "https://open.spotify.com/playlist/40VJNXglq6VtXd6IlJXIHp?si=9886848da44e4c53" },
+  { label: "Apple Music Playlist 1", url: "https://music.apple.com/jp/playlist/%E3%82%BB%E3%83%83%E3%83%88%E3%83%AA%E3%82%B9%E3%83%88-psychic-fever-from-exile-tribe-psychic-fever/pl.f16167312144499c99f925aa7d8af475" },
+  { label: "Apple Music Playlist 2", url: "https://music.apple.com/jp/playlist/%E3%82%BB%E3%83%83%E3%83%88%E3%83%AA%E3%82%B9%E3%83%88-psychic-fever-from-exile-tribe-psychic-fever/pl.4cf95ec6ef43431fbbfbfdbd1a84c3fa" },
+  { label: "Apple Music Playlist 3", url: "https://music.apple.com/jp/playlist/psychic-fever-ennichi-25-japanese-music-experience-la/pl.1cac484d7cf74ec89383214b2a27b224" },
+];
+
+// Handles
+const handles = [
+  "tsumu2636","lilyo71","rollsan","neoyukio","foreverkanon",
+  "shabotten","psyfestreaming","pcf4ever","psyfethailand",
+  "4eversyy","ashleyepidemic","ayaparupcflove"
+];
+
+// Render why messages
+const whyContainer = document.getElementById('why-cards');
+whyMessages.forEach(msg => {
+  const card = document.createElement('div');
+  card.className = 'msg-card';
+  card.innerHTML = `
+    <div class="msg-top">
+      <span class="msg-badge">${msg.label}</span>
+      <button class="copy-btn" data-copy="${msg.text.replace(/"/g, '&quot;')}">⎘ コピー</button>
+    </div>
+    <p class="msg-text">${msg.text}</p>
+  `;
+  whyContainer.appendChild(card);
+});
+
+// Render playlists
+const playlistContainer = document.getElementById('playlist-cards');
+playlists.forEach(pl => {
+  const card = document.createElement('div');
+  card.className = 'playlist-card';
+  card.innerHTML = `
+    <div class="playlist-info">
+      <p>${pl.label}</p>
+      <p>${pl.url}</p>
+    </div>
+    <button class="copy-btn" data-copy="${pl.url}">⎘ コピー</button>
+  `;
+  playlistContainer.appendChild(card);
+});
+
+// Render handles
+const handleGrid = document.getElementById('handle-grid');
+handles.forEach(handle => {
+  const item = document.createElement('div');
+  item.className = 'handle-item';
+  item.innerHTML = `
+    <span class="handle-name">${handle}</span>
+    <button class="handle-copy" data-copy="${handle}">コピー</button>
+  `;
+  handleGrid.appendChild(item);
+});
+
+// Copy all handles
+document.getElementById('copy-all-btn').addEventListener('click', function() {
+  const all = handles.join('\n');
+  navigator.clipboard.writeText(all).then(() => {
+    this.classList.add('copied');
+    this.textContent = '✓ 一括コピーしました！';
+    setTimeout(() => {
+      this.classList.remove('copied');
+      this.innerHTML = '⎘ ハンドル名を一括コピー';
+    }, 2200);
+  });
+});
+
+// Universal copy handler
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-copy]');
+  if (!btn) return;
+  const text = btn.getAttribute('data-copy');
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.innerHTML;
+    btn.classList.add('copied');
+    btn.innerHTML = btn.classList.contains('handle-copy') ? '✓ Copied!' : '✓ Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = orig;
+    }, 2200);
+  });
+});
+</script>
+</body>
+</html>
